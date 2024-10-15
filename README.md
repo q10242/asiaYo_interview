@@ -1,4 +1,16 @@
 
+# 安裝方法
+```
+docker-compose up -d --build
+```
+這裡開啟的port 是8081 port
+
+# 測試
+```
+docker-compose exec web bash
+php artisan test
+```
+
 
 # OrderInsert 策略模式說明
 

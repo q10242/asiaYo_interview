@@ -7,10 +7,18 @@ use App\Services\OrderInsert\OrderInsertMYR;
 use App\Services\OrderInsert\OrderInsertJPY;
 
 class OrderInsertFactory {
+    
 
-    public static function create(string $currency): OrderInsert
+    private $currency;
+    
+    public function __construct($currency) {
+        $this->currency = $currency;
+        
+    }
+
+    public function create(): OrderInsert
     {
-        switch ($currency) {
+        switch ($this->currency) {
             case 'TWD':
                 return new OrderInsertTWD();
             case 'USD':

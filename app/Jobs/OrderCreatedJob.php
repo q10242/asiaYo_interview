@@ -23,7 +23,8 @@ class OrderCreatedJob implements ShouldQueue
     {
         $data = $this->data;
         $currency = $data['currency'];
-        $orderInsert = OrderInsertFactory::create($currency);
+        $factory = new OrderInsertFactory($currency);
+        $orderInsert = $factory->create();
         $orderInsert->orderInsert($data);
     }
 }

@@ -124,19 +124,29 @@ class OrderTest extends TestCase
     
     public function test_currency_of_factory_instance()
     {
-        $orderInsert = \App\Services\OrderInsert\OrderInsertFactory::create('USD');
+        $currency = 'USD';
+        $factory = new \App\Services\OrderInsert\OrderInsertFactory($currency);
+        $orderInsert = $factory->create();
         $this->assertInstanceOf(\App\Services\OrderInsert\OrderInsertUSD::class, $orderInsert);
 
-        $orderInsert = \App\Services\OrderInsert\OrderInsertFactory::create('TWD');
+        $currency = 'TWD';
+        $factory = new \App\Services\OrderInsert\OrderInsertFactory($currency);
+        $orderInsert = $factory->create();
         $this->assertInstanceOf(\App\Services\OrderInsert\OrderInsertTWD::class, $orderInsert);
 
-        $orderInsert = \App\Services\OrderInsert\OrderInsertFactory::create('RMB');
+        $currency = 'RMB';
+        $factory = new \App\Services\OrderInsert\OrderInsertFactory($currency);
+        $orderInsert = $factory->create();
         $this->assertInstanceOf(\App\Services\OrderInsert\OrderInsertRMB::class, $orderInsert);
 
-        $orderInsert = \App\Services\OrderInsert\OrderInsertFactory::create('MYR');
+        $currency = 'MYR';
+        $factory = new \App\Services\OrderInsert\OrderInsertFactory($currency);
+        $orderInsert = $factory->create();
         $this->assertInstanceOf(\App\Services\OrderInsert\OrderInsertMYR::class, $orderInsert);
 
-        $orderInsert = \App\Services\OrderInsert\OrderInsertFactory::create('JPY');
+        $currency = 'JPY';
+        $factory = new \App\Services\OrderInsert\OrderInsertFactory($currency);
+        $orderInsert = $factory->create();
         $this->assertInstanceOf(\App\Services\OrderInsert\OrderInsertJPY::class, $orderInsert);
 
     }
@@ -144,7 +154,9 @@ class OrderTest extends TestCase
     public function test_invalid_currency_of_factory_instance()
     {
         $this->expectException(\InvalidArgumentException::class);
-        $orderInsert = \App\Services\OrderInsert\OrderInsertFactory::create('INVALID');
+        $currency = 'INVALID';
+        $factory = new \App\Services\OrderInsert\OrderInsertFactory($currency);
+        $orderInsert = $factory->create();
     }
 
 
